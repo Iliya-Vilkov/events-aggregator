@@ -1,2 +1,10 @@
 fastapi
 uvicorn
+sqlalchemy
+asyncpg
+ruff
+pytest
+pytest-asyncio
+pydantic-settings
+alembic
+
