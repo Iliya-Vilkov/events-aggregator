@@ -11,9 +11,10 @@ class Settings(BaseSettings):
     @property
     def database_url(self) -> str:
         """URL для подключения к БД через asyncpg."""
-        return self.postgres_connection_string.replace(
-            'postgresql://', 'postgresql+asyncpg://',
-        )
+        url = self.postgres_connection_string
+        if url.startswith('postgres://'):
+            url = 'postgresql://' + url[len('postgres://'):]
+        return url.replace('postgresql://', 'postgresql+asyncpg://')
 
 
 settings = Settings()
